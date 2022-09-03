@@ -61,18 +61,20 @@
         H99: "Однако, программирование, в итоге, принесет свои плоды.",
     };
 
+    let activeLink =  document.querySelector('.active');
     const divEl = document.querySelector('.nav-tabs');
-    divEl.addEventListener('click', ({target}) => {
-        if (!target.classList.contains('nav-link')) {
+    divEl.addEventListener('click', event => {
+        if (!event.target.classList.contains('nav-link')) {
             return;
         }
-        document.querySelectorAll('.nav-link').forEach(el => {
-            el.classList.remove("active");
-        });
-        target.classList.add("active");
+        activeLink.classList.remove("active");
+        event.target.classList.add("active");
+        activeLink = event.target;
         document.querySelector('.text').textContent = panelText.T1;
-
     });
+
+
+
 
 
     /*
@@ -81,7 +83,6 @@
     шрифт у текста, никакого резкого увеличения шрифта не должно быть при
     перетаскивании ползунка.
      */
-
 
     const rng = document.querySelector('input');
     const text = document.getElementById('inputDiv');

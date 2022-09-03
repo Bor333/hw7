@@ -25,7 +25,7 @@
 <div class="container">
     <ul class="nav nav-tabs">
         <li class="nav-item" data-text="T1">
-            <a class="nav-link" href="#">Link 1</a>
+            <a class="nav-link active" href="#">Link 1</a>
         </li>
         <li class="nav-item" data-text="X6">
             <a class="nav-link" href="#">Link 2</a>
@@ -70,7 +70,8 @@
         activeLink.classList.remove("active");
         event.target.classList.add("active");
         activeLink = event.target;
-        document.querySelector('.text').textContent = panelText.T1;
+        const textProperty = event.target.parentElement.dataset.text;
+        document.querySelector('.text').textContent = panelText[textProperty];
     });
 
 
@@ -84,11 +85,13 @@
     перетаскивании ползунка.
      */
 
-
-    const rng = document.querySelector('input');
     const text = document.getElementById('inputDiv');
-    rng.addEventListener("input", () => {
-        text.style.fontSize = rng.value + 'px';
+    const rng = document.querySelector('input');
+    rng.value = Number.parseInt(getComputedStyle(text).fontSize).toString();
+    console.log(text.style.fontSize);
+
+    rng.addEventListener("input", event => {
+        text.style.fontSize = event.target.value + 'px';
     });
 
 </script>

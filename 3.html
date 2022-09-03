@@ -25,24 +25,7 @@
      * параметр "n"
      */
     function descendingOrder(n) {
-        const nArr = Array.from(n.toString());
-
-        for (let j = nArr.length - 1; j > 0; j--) {
-            for (let i = 0; i < j; i++) {
-                if (nArr[i] < nArr[i + 1]) {
-                    let temp = nArr[i];
-                    nArr[i] = nArr[i + 1];
-                    nArr[i + 1] = temp;
-                }
-            }
-        }
-
-        n = '';
-        nArr.forEach ( (item) => {
-            n += item;
-        });
-
-        return +n;
+        return +n.toString().split('').sort((a, b) => b - a).join('');
     }
 
     console.log(descendingOrder(42145)); // 54421
